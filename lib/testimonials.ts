@@ -12,7 +12,9 @@ interface ITestimonial {
 }
 
 export function getThreeTopTestimonials(testimonials: ITestimonial[]) {
-    return testimonials.slice(0, 3);
+    return testimonials
+      .sort((a, b) => b.rating - a.rating)
+      .slice(0, 3);
 }
 
 export const testimonials: ITestimonial[] = [

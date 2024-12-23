@@ -1,0 +1,17 @@
+[
+    { "logo": "Airbnb.svg", "name": "Airbnb" },
+    { "logo": "Google.svg", "name": "Google" },
+    { "logo": "BookMyShow.svg", "name": "BookMyShow" },
+    { "logo": "OYO.svg", "name": "OYO" },
+    { "logo": "Amazon.svg", "name": "Amazon" },
+    { "logo": "Microsoft.svg", "name": "Microsoft" },
+    { "logo": "FedEx.svg", "name": "FedEx" },
+    { "logo": "Walmart.svg", "name": "Walmart" },
+    { "logo": "OLA.svg", "name": "OLA" },
+    { "logo": "Hubspot.svg", "name": "Hubspot" },
+    { "logo": "Gatsby.svg", "name": "Gatsby" },
+    { "logo": "Strapi.svg", "name": "Strapi" },
+    { "logo": "Atlassian.svg", "name": "Atlassian" },
+    { "logo": "Servicenow.svg", "name": "Servicenow" },
+    { "logo": "Grubhub.svg", "name": "Grubhub" }
+]

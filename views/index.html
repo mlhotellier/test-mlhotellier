@@ -1,11 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenue</title>
+  <title>Landify Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
-  <p>TODO: Construct the landing page</p>  
+  <div id="main">
+    <img src="/static/left-band-1.svg" alt="Background" class="svg-background left">
+    <img src="/static/left-band-2.svg" alt="Background" class="svg-background left">
+    <img src="/static/right-band-1.svg" alt="Background" class="svg-background right">
+    <img src="/static/right-band-2.svg" alt="Background" class="svg-background right">
+    <img src="/static/right-band-3.svg" alt="Background" class="svg-background right">
+    
+    <header class="header">
+      <div class="container">
+        <nav class="header__nav">
+          <div class="header__nav-left">
+            <a href="/" class="header__logo">
+              <img src="/static/logo-app.svg" alt="Logo Landify" class="header__logo-img" />
+            </a>
+            <ul class="header__nav-links">
+              <li class="header__nav-item">
+                <a href="#" class="header__nav-link">Features</a>
+              </li>
+              <li class="header__nav-item">
+                <a href="#" class="header__nav-link">Pricing</a>
+              </li>
+              <li class="header__nav-item">
+                <a href="#" class="header__nav-link">Careers</a>
+              </li>
+              <li class="header__nav-item">
+                <a href="#" class="header__nav-link">Help</a>
+              </li>
+            </ul>
+          </div>
+          <div class="header__nav-right">
+            <button class="header__btn-cta">
+              <img src="/static/cta-play-store.svg" alt="CTA Play Store" class="header__btn-img"/>
+            </button>
+            <button class="header__btn-cta">
+              <img src="/static/cta-apple-store.svg" alt="CTA Apple Store" class="header__btn-img" />
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    
+    <section id="hero">
+      <div class="container">
+        <div class="hero__main">
+          <div class="hero__main-left">
+            <h1 class="hero__main-title">The easiest way to manage projects</h1>
+            <p class="hero__main-text">From the small stuff to the big picture, organizes the work so teams know what to do, why it matters, and how to get it done.</p>
+            <div>
+              <button class="hero__main-btn">Get Started</button>
+              <button class="hero__main-btn secondary"><i class='bx bx-play-circle' ></i> Watch Video</button>
+            </div>
+          </div>
+          <div class="hero__main-right">
+            <img src="/static/mockup-app.svg" alt="Mockup de l'app Landify" class="hero__main-mockup" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section id="testimonials">
+    <div class="container">
+      <div id="root" class="testimonials-component"></div>
+    </div>
+  </section>
+  <section id="client">
+    <div class="container">
+      <div id="clients-logos-container" class="logos-container"></div>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="container">
+      <div class="footer">
+        <p>© 2021 Landify UI Kit. All rights reserved</p>
+        <div class="footer__socials">
+          <a href="#" class="footer__socials-links"><i class='bx bxl-instagram'></i></a>
+          <a href="#" class="footer__socials-links"><i class='bx bxl-dribbble'></i></a>
+          <a href="#" class="footer__socials-links"><i class='bx bxl-twitter'></i></a>
+          <a href="#" class="footer__socials-links"><i class='bx bxl-youtube'></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modale -->
+  <div id="exit-modal" style="display: none;">
+    <div class="modal-content">
+      <div>
+        <p class="text-cta"><span>🤝</span> Become an affiliate</p>
+        <p class="offer-cta">
+          Join Landify affiliate <br>
+          program and earn <span class="offer-cta-percent">25%</span> <br>
+          of every purchase
+        </p>
+      </div>
+      <button class="btn-modal">Register and start to earn <img src="/static/arrow-icon.svg" /></button>
+    </div>
+  </div>
+  
+  <!-- Scrips -->
+  <script src="/public/assets/index.js"></script>
+  <script src="/main.js"></script>
+
 </body>
 </html>
