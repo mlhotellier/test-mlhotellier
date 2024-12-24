@@ -30,7 +30,6 @@ document.addEventListener("mousemove", (event) => {
 });
 
 let lastScrollTop = 0;
-
 window.addEventListener("scroll", () => {
   const modal = document.getElementById("exit-modal");
   const currentScroll = window.scrollY;
@@ -42,7 +41,6 @@ window.addEventListener("scroll", () => {
 });
 
 let inactivityTimeout;
-
 function resetTimer() {
   clearTimeout(inactivityTimeout);
   if (isMobile()) {
@@ -115,12 +113,12 @@ const triggerAnimationsOnScroll = () => {
 
   if (rootTop < window.innerHeight && rootBottom >= 0) {
     // Ajouter la classe d'animation à tous les éléments .testimonial-item
-    testimonialItems.forEach((item, index) => {
+    testimonialItems.forEach((item) => {
       item.classList.add('fade-in-bubble');
     });
 
     // Ajouter la classe d'animation à tous les éléments .testimonial-details
-    testimonialDetails.forEach((detail, index) => {
+    testimonialDetails.forEach((detail) => {
       detail.classList.add('fade-in-details');
     });
 
@@ -129,6 +127,7 @@ const triggerAnimationsOnScroll = () => {
   }
 };
 window.addEventListener('scroll', triggerAnimationsOnScroll);
+window.addEventListener('resize', triggerAnimationsOnScroll);
 
 // burger menu 
 const burgerIcon = document.querySelector('.burger-icon');
