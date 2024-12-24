@@ -1,42 +1,75 @@
 // scripts for modal
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+// Show modal
+function showModal() {
+  const modal = document.getElementById("exit-modal");
+  modal.classList.add("visible");
+  modal.style.display = "flex";
+}
+
+// Hide modal
+function closeModal() {
+  const modal = document.getElementById("exit-modal");
+  modal.classList.remove("visible");
+  modal.style.display = "none";
+}
+
+// Desktop : Détection de la souris dans le coin supérieur droit
 document.addEventListener("mousemove", (event) => {
-    const modal = document.getElementById("exit-modal");
-  
-    // Détecter le coin supérieur droit (exemple: moins de 50px du haut et 50px du bord droit)
-    const isTopRightCorner =
-      event.clientY < 50 && window.innerWidth - event.clientX < 50;
-  
-    if (isTopRightCorner && !modal.classList.contains("visible")) {
+  const modal = document.getElementById("exit-modal");
+
+  if (!isMobile()) { 
+      const isTopRightCorner = event.clientY < 50 && window.innerWidth - event.clientX < 50;
+      if (isTopRightCorner && !modal.classList.contains("visible")) {
+          showModal();
+      }
+  }
+});
+
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", () => {
+  const modal = document.getElementById("exit-modal");
+  const currentScroll = window.scrollY;
+
+  if (isMobile() && currentScroll < lastScrollTop && currentScroll < 100 && !modal.classList.contains("visible")) {
       showModal();
-    }
-  });
-  
-  // Fonction pour afficher la modale
-  function showModal() {
-    const modal = document.getElementById("exit-modal");
-    modal.classList.add("visible");
-    modal.style.display = "flex";
   }
-  
-  // Fonction pour fermer la modale
-  function closeModal() {
-    const modal = document.getElementById("exit-modal");
-    modal.classList.remove("visible");
-    modal.style.display = "none";
+  lastScrollTop = currentScroll;
+});
+
+let inactivityTimeout;
+
+function resetTimer() {
+  clearTimeout(inactivityTimeout);
+  if (isMobile()) {
+      inactivityTimeout = setTimeout(() => {
+          showModal();
+      }, 60000);  // 60 secondes d'inactivité
   }
-  
-  // Fermer la modale si l'utilisateur clique en dehors
-  document.addEventListener("click", (event) => {
-    const modal = document.getElementById("exit-modal");
-    const modalContent = document.querySelector("#exit-modal .modal-content");
-  
-    if (
-      modal.classList.contains("visible") && 
-      !modalContent.contains(event.target)
-    ) {
+}
+
+// Réinitialisation du timer en cas d'interaction (mobile)
+document.addEventListener("mousemove", resetTimer);
+document.addEventListener("scroll", resetTimer);
+document.addEventListener("touchmove", resetTimer);
+document.addEventListener("keydown", resetTimer);
+
+// Lancement du timer dès le chargement de la page
+resetTimer();
+
+// Fermer la modale en cliquant à l'extérieur
+document.addEventListener("click", (event) => {
+  const modal = document.getElementById("exit-modal");
+  const modalContent = document.querySelector("#exit-modal .modal-content");
+
+  if (modal.classList.contains("visible") && !modalContent.contains(event.target)) {
       closeModal();
-    }
-  });  
+  }
+});
 
 // script pour client section
 document.addEventListener("DOMContentLoaded", function () {
@@ -97,3 +130,29 @@ const triggerAnimationsOnScroll = () => {
 };
 window.addEventListener('scroll', triggerAnimationsOnScroll);
 
+// burger menu 
+const burgerIcon = document.querySelector('.burger-icon');
+const mobileMenu = document.querySelector('.menu-mobile');
+const overlay = document.querySelector('.overlay');
+
+burgerIcon.addEventListener('click', () => {
+  burgerIcon.classList.toggle('open');
+  mobileMenu.classList.toggle('active');
+  overlay.classList.toggle('active');
+
+  if (mobileMenu.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+});
+
+// Ferme le menu en cliquant à l'extérieur
+window.addEventListener('click', (e) => {
+  if (!burgerIcon.contains(e.target) && !mobileMenu.contains(e.target)) {
+    burgerIcon.classList.remove('open');
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});

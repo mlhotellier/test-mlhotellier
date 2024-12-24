@@ -14,11 +14,12 @@
 </head>
 <body>
   <div id="main">
-    <img src="/static/left-band-1.svg" alt="Background" class="svg-background left">
-    <img src="/static/left-band-2.svg" alt="Background" class="svg-background left">
-    <img src="/static/right-band-1.svg" alt="Background" class="svg-background right">
-    <img src="/static/right-band-2.svg" alt="Background" class="svg-background right">
-    <img src="/static/right-band-3.svg" alt="Background" class="svg-background right">
+    <img src="/static/bg-main-content.svg" alt="Background" class="svg-background bg">
+    <img src="/static/left-band-1.svg" alt="Background" class="svg-background left first">
+    <img src="/static/left-band-2.svg" alt="Background" class="svg-background left second">
+    <img src="/static/right-band-1.svg" alt="Background" class="svg-background right first">
+    <img src="/static/right-band-2.svg" alt="Background" class="svg-background right second">
+    <img src="/static/right-band-3.svg" alt="Background" class="svg-background right third">
     
     <header class="header">
       <div class="container">
@@ -40,7 +41,7 @@
               <li class="header__nav-item">
                 <a href="#" class="header__nav-link">Help</a>
               </li>
-            </ul>
+            </ul>         
           </div>
           <div class="header__nav-right">
             <button class="header__btn-cta">
@@ -50,9 +51,27 @@
               <img src="/static/cta-apple-store.svg" alt="CTA Apple Store" class="header__btn-img" />
             </button>
           </div>
+          <div>
+            <div class="burger-icon" id="burger-icon">
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+                <div class="line line-3"></div>
+            </div>
+            <nav class="menu-mobile" id="menu-mobile">
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </nav>
+            <div class="overlay"></div>
+        </div>
         </nav>
       </div>
     </header>
+    
+    
     
     <section id="hero">
       <div class="container">
@@ -67,6 +86,14 @@
           </div>
           <div class="hero__main-right">
             <img src="/static/mockup-app.svg" alt="Mockup de l'app Landify" class="hero__main-mockup" />
+            <div class="cta-stores">
+              <button class="header__btn-cta">
+                <img src="/static/cta-play-store.svg" alt="CTA Play Store" class="header__btn-img"/>
+              </button>
+              <button class="header__btn-cta">
+                <img src="/static/cta-apple-store.svg" alt="CTA Apple Store" class="header__btn-img" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
