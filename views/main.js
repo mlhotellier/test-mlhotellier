@@ -1,23 +1,22 @@
-// scripts for modal
+// Script detecting if app is running on Desktop or Mobile
 function isMobile() {
   return window.innerWidth <= 768;
 }
 
-// Show modal
+// Scripts for open/close modal
 function showModal() {
   const modal = document.getElementById("exit-modal");
   modal.classList.add("visible");
   modal.style.display = "flex";
 }
 
-// Hide modal
 function closeModal() {
   const modal = document.getElementById("exit-modal");
   modal.classList.remove("visible");
   modal.style.display = "none";
 }
 
-// Desktop : Détection de la souris dans le coin supérieur droit
+// Detection to start modal appearance on Desktop
 document.addEventListener("mousemove", (event) => {
   const modal = document.getElementById("exit-modal");
 
@@ -29,6 +28,7 @@ document.addEventListener("mousemove", (event) => {
   }
 });
 
+// Detection to start modal appearance on Mobile on scrool
 let lastScrollTop = 0;
 window.addEventListener("scroll", () => {
   const modal = document.getElementById("exit-modal");
@@ -40,6 +40,7 @@ window.addEventListener("scroll", () => {
   lastScrollTop = currentScroll;
 });
 
+// Detection to start modal appearance on Mobile on inactivity
 let inactivityTimeout;
 function resetTimer() {
   clearTimeout(inactivityTimeout);
@@ -50,16 +51,16 @@ function resetTimer() {
   }
 }
 
-// Réinitialisation du timer en cas d'interaction (mobile)
+// Timer reset in case of interaction on Mobile
 document.addEventListener("mousemove", resetTimer);
 document.addEventListener("scroll", resetTimer);
 document.addEventListener("touchmove", resetTimer);
 document.addEventListener("keydown", resetTimer);
 
-// Lancement du timer dès le chargement de la page
+// Launch the timer as soon as the page loads
 resetTimer();
 
-// Fermer la modale en cliquant à l'extérieur
+// Close the modal by clicking outside
 document.addEventListener("click", (event) => {
   const modal = document.getElementById("exit-modal");
   const modalContent = document.querySelector("#exit-modal .modal-content");
@@ -69,10 +70,9 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// script pour client section
+// Script to display logos of clients
 document.addEventListener("DOMContentLoaded", function () {
   const logosContainer = document.getElementById("clients-logos-container");
-
   const clients = [
     { logo: "Airbnb.svg", name: "Airbnb" },
     { logo: "Google.svg", name: "Google" },
@@ -90,50 +90,42 @@ document.addEventListener("DOMContentLoaded", function () {
     { logo: "Servicenow.svg", name: "Servicenow" },
     { logo: "Grubhub.svg", name: "Grubhub" },
   ];
-
   clients.forEach((client) => {
     const imgElement = document.createElement("img");
     imgElement.src = `/static/clients_logos/${client.logo}`;
     imgElement.alt = `Logo ${client.name}`;
     imgElement.classList.add("client-logo");
+    imgElement.loading = "lazy";
 
     logosContainer.appendChild(imgElement);
   });
 });
 
-// Animation pour la section testimonials
+// Adding classs for animation for the testimonials section
 const triggerAnimationsOnScroll = () => {
   const rootElement = document.querySelector('#root');
   const testimonialItems = document.querySelectorAll('.testimonial-item');
   const testimonialDetails = document.querySelectorAll('.testimonial-details');
 
-  // Vérification si #root est visible dans la fenêtre
   const rootTop = rootElement.getBoundingClientRect().top;
   const rootBottom = rootElement.getBoundingClientRect().bottom;
 
   if (rootTop < window.innerHeight && rootBottom >= 0) {
-    // Ajouter la classe d'animation à tous les éléments .testimonial-item
     testimonialItems.forEach((item) => {
       item.classList.add('fade-in-bubble');
     });
-
-    // Ajouter la classe d'animation à tous les éléments .testimonial-details
     testimonialDetails.forEach((detail) => {
       detail.classList.add('fade-in-details');
     });
-
-    // On n'a plus besoin de vérifier l'élément une fois qu'il est visible
-    window.removeEventListener('scroll', triggerAnimationsOnScroll);
   }
 };
 window.addEventListener('scroll', triggerAnimationsOnScroll);
 window.addEventListener('resize', triggerAnimationsOnScroll);
 
-// burger menu 
+// Scripts for open/close burger menu
 const burgerIcon = document.querySelector('.burger-icon');
 const mobileMenu = document.querySelector('.menu-mobile');
 const overlay = document.querySelector('.overlay');
-
 burgerIcon.addEventListener('click', () => {
   burgerIcon.classList.toggle('open');
   mobileMenu.classList.toggle('active');
@@ -146,7 +138,7 @@ burgerIcon.addEventListener('click', () => {
   }
 });
 
-// Ferme le menu en cliquant à l'extérieur
+// Close the menu by clicking outside
 window.addEventListener('click', (e) => {
   if (!burgerIcon.contains(e.target) && !mobileMenu.contains(e.target)) {
     burgerIcon.classList.remove('open');

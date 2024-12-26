@@ -114,7 +114,6 @@ async function handler(req: { url: string | URL; }) {
 
   // Implémenter la requête api "/api/testimonials/top"
   if (url.pathname === "/api/testimonials/top") {
-    // Utiliser la fonction pour obtenir les meilleurs témoignages
     const topTestimonials = getThreeTopTestimonials(testimonials);
     return new Response(JSON.stringify(topTestimonials), {
       headers: { 
@@ -130,11 +129,7 @@ async function handler(req: { url: string | URL; }) {
     try {
       const manifestPath = "views/public/.vite/manifest.json";
       const manifest = JSON.parse(await renderFile(manifestPath));      
-  
-      // Récupérer le fichier JS généré
       const jsFile = manifest["index.html"].file;
-      
-      // Charger le contenu du fichier JS
       const jsContent = await renderFile(`views/public/${jsFile}`);
       return new Response(jsContent, {
         headers: { "Content-Type": "application/javascript" },
@@ -151,11 +146,7 @@ async function handler(req: { url: string | URL; }) {
     try {
       const manifestPath = "views/public/.vite/manifest.json";
       const manifest = JSON.parse(await renderFile(manifestPath));
-
-      // Récupérer le fichier CSS généré
-      const cssFile = manifest["index.html"].css[0]; // assets/index-BzCDavla.css
-      
-      // Charger le contenu du fichier CSS
+      const cssFile = manifest["index.html"].css[0];
       const cssContent = await renderFile(`views/public/${cssFile}`);
       return new Response(cssContent, {
         headers: { "Content-Type": "text/css" },
@@ -166,7 +157,7 @@ async function handler(req: { url: string | URL; }) {
       return new Response("Erreur de fichier CSS", { status: 500 });
     }
   }
-
+  
   return new Response("Not Found", { status: 404 });  
 }
 

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landify - L'application la plus simple pour gérer vos projets en équipe. Augmentez votre productivité avec nos outils performants." />
+  <meta name="author" content="Landify Team" />
   <title>Landify Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,11 +12,11 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-
 </head>
 <body>
+  
   <div id="main">
-    <img src="/static/bg-main-content.svg" alt="Background" class="svg-background bg">
+    <img src="/static/bg-main-content.svg" alt="Illustration fond principal de la page d'accueil" class="svg-background bg">
     <img src="/static/left-band-1.svg" alt="Background" class="svg-background left first">
     <img src="/static/left-band-2.svg" alt="Background" class="svg-background left second">
     <img src="/static/right-band-1.svg" alt="Background" class="svg-background right first">
@@ -26,7 +28,7 @@
         <nav class="header__nav">
           <div class="header__nav-left">
             <a href="/" class="header__logo">
-              <img src="/static/logo-app.svg" alt="Logo Landify" class="header__logo-img" />
+              <img src="/static/logo-app.svg" alt="Logo de Landify" class="header__logo-img" />
             </a>
             <ul class="header__nav-links">
               <li class="header__nav-item">
@@ -70,6 +72,7 @@
         </nav>
       </div>
     </header>
+    
     <section id="hero">
       <div class="container">
         <div class="hero__main">
@@ -82,7 +85,7 @@
             </div>
           </div>
           <div class="hero__main-right">
-            <img src="/static/mockup-app.svg" alt="Mockup de l'app Landify" class="hero__main-mockup" />
+            <img src="/static/mockup-app.svg" alt="Mockup de l'app Landify" class="hero__main-mockup" loading="lazy" />
             <div class="cta-stores">
               <button class="header__btn-cta">
                 <img src="/static/cta-play-store.svg" alt="CTA Play Store" class="header__btn-img"/>
@@ -96,16 +99,19 @@
       </div>
     </section>
   </div>
+
   <section id="testimonials">
     <div class="container">
       <div id="root" class="testimonials-component"></div>
     </div>
   </section>
+
   <section id="client">
     <div class="container">
       <div id="clients-logos-container" class="logos-container"></div>
     </div>
   </section>
+
   <footer id="footer">
     <div class="container">
       <div class="footer">
@@ -138,6 +144,11 @@
   <!-- Scrips -->
   <script src="/public/assets/index.js"></script>
   <script src="/main.js"></script>
+  <script>
+    window.addEventListener('error', function(e) {
+      console.error("Erreur de chargement d'un script :", e.target.src);
+    });
+  </script>
 
 </body>
 </html>
