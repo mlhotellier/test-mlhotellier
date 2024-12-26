@@ -19,7 +19,16 @@ const Testimonial = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/testimonials/top`)
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    if (!apiUrl) {
+      console.error("VITE_API_URL n'est pas défini dans l'environnement.");
+      setError(true);
+      setLoading(false);
+      return;
+    }
+
+    fetch(`${apiUrl}/api/testimonials/top`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Erreur HTTP : ${res.status}`);
