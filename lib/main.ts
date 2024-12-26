@@ -37,28 +37,52 @@ async function handler(req: { url: string | URL; }) {
   // Servir le fichier style.css
   if (url.pathname === "/style.css") {
     try {
-      const css = await renderFile("views/style.css");
+      const css = await renderFile("views/style.min.css");
       return new Response(css, {
-        headers: { "Content-Type": "text/css" },
+        headers: { 
+          "Content-Type": "text/css", 
+          "Cache-Control": "public, max-age=31536000, immutable"
+        },
         status: 200,
       });
     } catch (error) {
       console.error("Erreur de lecture du fichier CSS :", error);
-      return new Response("Erreur de fichier CSS", { status: 500 });
+      try {
+        const cssFallback = await renderFile("views/style.css");
+        return new Response(cssFallback, {
+          headers: { "Content-Type": "text/css" },
+          status: 200,
+        });
+      } catch (fallbackError) {
+        console.error("Erreur de lecture du fichier CSS de secours :", fallbackError);
+        return new Response("Erreur de fichier CSS", { status: 500 });
+      }
     }
   }
 
   // Servir le fichier main.js
   if (url.pathname === "/main.js") {
     try {
-      const css = await renderFile("views/main.js");
-      return new Response(css, {
-        headers: { "Content-Type": "application/javascript" },
+      const js = await renderFile("views/main.min.js");
+      return new Response(js, {
+        headers: { 
+          "Content-Type": "application/javascript",
+          "Cache-Control": "public, max-age=31536000, immutable"
+        },
         status: 200,
       });
     } catch (error) {
       console.error("Erreur de lecture du fichier JS :", error);
-      return new Response("Erreur de fichier JS", { status: 500 });
+      try {
+        const jsFallback = await renderFile("views/main.css");
+        return new Response(jsFallback, {
+          headers: { "Content-Type": "text/css" },
+          status: 200,
+        });
+      } catch (fallbackError) {
+        console.error("Erreur de lecture du fichier JS de secours :", fallbackError);
+        return new Response("Erreur de fichier JS", { status: 500 });
+      }
     }
   }
 
@@ -138,23 +162,6 @@ async function handler(req: { url: string | URL; }) {
     } catch (error) {
       console.error("Erreur lors de la lecture du fichier JS :", error);
       return new Response("Erreur de fichier JS", { status: 500 });
-    }
-  }
-
-  // Servir les fichiers CSS générés par Vite
-  if (url.pathname === "/public/assets/index.css") {
-    try {
-      const manifestPath = "views/public/.vite/manifest.json";
-      const manifest = JSON.parse(await renderFile(manifestPath));
-      const cssFile = manifest["index.html"].css[0];
-      const cssContent = await renderFile(`views/public/${cssFile}`);
-      return new Response(cssContent, {
-        headers: { "Content-Type": "text/css" },
-        status: 200,
-      });
-    } catch (error) {
-      console.error("Erreur lors de la lecture du fichier CSS :", error);
-      return new Response("Erreur de fichier CSS", { status: 500 });
     }
   }
   
