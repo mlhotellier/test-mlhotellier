@@ -1,3 +1,58 @@
+/* keyframes */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeInBubble {
+  from {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDetails {
+  from {
+    opacity: 0;
+    transform: translateY(-120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* global css */
 html, body, section, div, header, footer {
   font-family: "Inter", serif;
   padding: 0;
@@ -7,7 +62,6 @@ html, body, section, div, header, footer {
 body {
   overflow-x: hidden;
 }
-
 
 button:hover, a:hover {
   cursor: pointer;
@@ -19,6 +73,7 @@ button:hover, a:hover {
   padding: 0 1rem;
 }
 
+/* header css */
 .header {
   height: 80px;
   align-content:center;
@@ -197,7 +252,7 @@ button:hover, a:hover {
   z-index:9;
 }
 
-
+/* main css */
 #main {
   position: relative;
   padding-bottom: 56px;
@@ -239,11 +294,12 @@ button:hover, a:hover {
   left: calc(100vw - 180px);
 }
 
+/* hero section css */
 .hero__main {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 72px;
-    margin-bottom: 74px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 72px;
+  margin-bottom: 74px;
 }
 
 .hero__main::after {
@@ -261,21 +317,21 @@ button:hover, a:hover {
 }
 
 .hero__main-left {
-    width: 696px;
-    padding-right: 48px;
-    box-sizing:border-box;
+  width: 696px;
+  padding-right: 48px;
+  box-sizing:border-box;
 }
 
 .hero__main-title {
-    font-size: 3.75rem;
-    font-weight: 700;
-    margin:96px 0 0px
+  font-size: 3.75rem;
+  font-weight: 700;
+  margin:96px 0 0px
 }
 
 .hero__main-text {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 16px 0 32px;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 16px 0 32px;
 }
 
 .hero__main-btn {
@@ -305,22 +361,11 @@ button:hover, a:hover {
 }
 
 .hero__main-right {
-    width: 488px;
-    opacity: 0;
-    text-align: center;
-    animation: fadeInRight 0.4s ease-in-out forwards;
-    animation-delay: 0.6s;
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
+  width: 488px;
+  opacity: 0;
+  text-align: center;
+  animation: fadeInRight 0.4s ease-in-out forwards;
+  animation-delay: 0.6s;
 }
 
 .hero__main-right .hero__main-mockup {
@@ -351,31 +396,10 @@ button:hover, a:hover {
 .cta-stores {
   display: none;
 }
-  
+
+/* testimonials section css */
 #testimonials {
     background-color: #F2F2F2;
-}
-
-@keyframes fadeInBubble {
-  from {
-    opacity: 0;
-    transform: translateY(120px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDetails {
-  from {
-    opacity: 0;
-    transform: translateY(-120px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .testimonials-component {
@@ -473,7 +497,7 @@ button:hover, a:hover {
   animation: fadeInDetails 0.9s ease-in-out forwards;
 }
 
-
+/* client section css */
 .logos-container {
   padding: 95px 0;
   display: grid;
@@ -499,22 +523,23 @@ button:hover, a:hover {
   transform: scale(1.1);
 }
 
+/* footer css */
 #footer {
-    background-color: #000000;
-    align-content:center;
-    height:72px;
+  background-color: #000000;
+  align-content:center;
+  height:72px;
 }
 
 .footer {    
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
 }
 
 .footer p {
-    color: #D1D5DB;
-    font-size: 14px;
-    font-weight: 400;
+  color: #D1D5DB;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .footer__socials {
@@ -541,15 +566,15 @@ button:hover, a:hover {
 }
 
 .footer__socials-links:first-of-type {
-    margin-left: 0px
+  margin-left: 0px
 }
 
 .footer__socials i {
-    color: #ffffff;
-    font-size: 14px;
+  color: #ffffff;
+  font-size: 14px;
 }
 
-/* Modale */
+/* modal css */
 #exit-modal.visible {
   animation: fadeIn 0.2s ease-out;
   position: fixed;
@@ -559,15 +584,6 @@ button:hover, a:hover {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
-}
-  
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 #exit-modal {
@@ -655,7 +671,7 @@ button:hover, a:hover {
   display: none;
 }
 
-/*  MOBILE */
+/*  mobile version css */
 @media (max-width: 768px) {
   .burger-icon {
     display: flex;
@@ -691,16 +707,6 @@ button:hover, a:hover {
   .hero__main-right .hero__main-mockup {
     width: 260px;
   }
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(200px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
   .hero__main-right .hero__main-mockup:hover {
     transform: scale(1);
   }
@@ -712,8 +718,8 @@ button:hover, a:hover {
   }
   .cta-stores {
     display: flex;
-    position: absolute;
-    bottom: 80px;
+    position: relative;
+    bottom: 20px;
     width: 100%;
     justify-content: center;
   }
