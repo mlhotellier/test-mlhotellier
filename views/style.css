@@ -519,6 +519,10 @@ button:hover, a:hover {
   transition: all 0.2s ease-in-out;
 }
 
+.client-logo.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
 .client-logo:hover {
   transform: scale(1.1);
 }

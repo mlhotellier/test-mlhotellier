@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     imgElement.src = `/static/clients_logos/${client.logo}`;
     imgElement.alt = `Logo ${client.name}`;
     imgElement.classList.add("client-logo");
+    imgElement.classList.add("fade-in");
     imgElement.loading = "lazy";
 
     logosContainer.appendChild(imgElement);
