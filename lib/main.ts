@@ -74,9 +74,9 @@ async function handler(req: { url: string | URL; }) {
     } catch (error) {
       console.error("Erreur de lecture du fichier JS :", error);
       try {
-        const jsFallback = await renderFile("views/main.css");
+        const jsFallback = await renderFile("views/main.js");
         return new Response(jsFallback, {
-          headers: { "Content-Type": "text/css" },
+          headers: { "Content-Type": "application/javascript" },
           status: 200,
         });
       } catch (fallbackError) {
